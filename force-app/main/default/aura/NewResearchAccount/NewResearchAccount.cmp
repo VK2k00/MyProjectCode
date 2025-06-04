@@ -1,0 +1,25 @@
+<aura:component implements="force:lightningQuickActionWithoutHeader,force:hasRecordId" access="global">
+    <!-- Attributes -->
+    <aura:attribute name="recordTypeId" type="Id" />
+    <aura:attribute name="accountRecord" type="Account" default="{ 'sobjectType': 'Account' }" />
+
+    <!-- Handlers -->
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <!-- Body -->
+    <lightning:recordEditForm
+        objectApiName="Account"
+        recordTypeId="{!v.recordTypeId}"
+        onsuccess="{!c.handleSuccess}"
+        onerror="{!c.handleError}">
+
+        <lightning:messages />
+
+        <lightning:inputField fieldName="Name" />
+        <lightning:inputField fieldName="Industry" />
+        <lightning:inputField fieldName="Phone" />
+        <!-- Add other fields as necessary -->
+
+        <lightning:button type="submit" label="Save" />
+    </lightning:recordEditForm>
+</aura:component>

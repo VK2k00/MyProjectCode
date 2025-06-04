@@ -1,0 +1,5 @@
+<apex:page controller="RedirectToRecordTypeController">
+    <apex:form >
+        <apex:commandButton value="Create New Account" action="{!redirectToRecordType}" />
+    </apex:form>
+</apex:page>

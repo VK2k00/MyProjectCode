@@ -1,0 +1,14 @@
+<template>
+    <div class="slds-p-around_small">
+        <template if:true={contactNotFound}>
+            <p class={notFoundCSS}>{contactNotFound}</p>
+        </template>
+
+        <template if:true={contactList.length}>
+            <p>Total Contacts : {contactList.length}</p>
+            <lightning-datatable
+            key-field="id" data={contactList} columns={columns} hide-checkbox-column=true>
+
+            </lightning-datatable>        </template>
+    </div>
+</template>

@@ -1,0 +1,17 @@
+<template>
+   <lightning-card title="Cases Records">
+<div class="slds-m-around_medium">
+    <template if:true={wireCase.data}>
+    <lightning-datatable 
+    key-field="id"
+    data={wireCase.data}
+    columns={columns}
+    onsave={handler}
+    draft-values={draftValues}>
+</lightning-datatable>
+</template>
+</div>
+
+   </lightning-card>
+
+</template>

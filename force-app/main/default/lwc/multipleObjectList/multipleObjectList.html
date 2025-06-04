@@ -1,0 +1,34 @@
+<template>
+    <lightning-card title="Search Account, Contact, and Opportunity Records" icon-name="standard:search">
+        <lightning-input type="search" label="Search" onchange={handleSearchChange}></lightning-input>
+
+        <div class="slds-m-around_medium">
+            <template if:true={records}>
+                <lightning-layout multiple-rows class="record-container">
+                    <template for:each={records} for:item="record">
+                        <lightning-layout-item key={record.Id} size="12" class="slds-m-around_small record-item"
+                            onclick={navigateToRecord} data-id={record.Id}>
+                            <p>{record.Name} ({record.ObjectType})</p>
+                            <p>{record.Details}</p>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+        </div>
+
+        <template if:true={error}>
+            <p class="slds-text-color_error">{error}</p>
+        </template>
+
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" size="large"></lightning-spinner>
+        </template>
+
+        <template if:true={pagination}>
+            <lightning-button-group>
+                <lightning-button label="Previous" onclick={previousPage} disabled={disablePrevious}></lightning-button>
+                <lightning-button label="Next" onclick={nextPage} disabled={disableNext}></lightning-button>
+            </lightning-button-group>
+        </template>
+    </lightning-card>
+</template>

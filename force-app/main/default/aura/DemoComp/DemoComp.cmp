@@ -1,0 +1,17 @@
+<aura:component >
+    <aura:attribute name="var1" type="String" />
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:attribute name="acc" type="Account" default="{'sobjtype': 'Account', 'Name': 'TestAcc'}"/>
+    
+    <aura:attribute name="jsobj" type="object"/>
+    <h1>
+        test arrtibute value :{!v.var1}
+        <hr/>
+        
+        {!v.acc.Name}  {!v.acc.sobjtype}
+        <hr/>
+        
+        jsobj value: {!v.jsobj.name}-{!v.jsobj.email}
+    </h1>
+    </aura:component>

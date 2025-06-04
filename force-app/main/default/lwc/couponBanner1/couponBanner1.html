@@ -1,0 +1,15 @@
+<template>
+    <template if:true={campaign}>
+        <div class="coupon-banner">
+            <div class="message">
+                <p>
+                    <strong>{campaign.Header_Text_Block__c} Opt In Before </strong><br />
+                    <span class="date">{formattedDate}</span>
+                </p>
+            </div>
+            <div class="action">
+                <button onclick={handleOptIn}>OPT IN HERE</button>
+            </div>
+        </div>
+    </template>    
+</template>

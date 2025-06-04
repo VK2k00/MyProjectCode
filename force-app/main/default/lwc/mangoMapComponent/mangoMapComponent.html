@@ -1,0 +1,12 @@
+<template>
+    <lightning-card>
+   <lightning-tabset>
+    <lightning-tab label="Select Object">
+        <lightning-datatable class="slds-border_top" key-field="id" data={objectOptions} columns={columns}
+                    onrowaction={handleRowAction}>
+                </lightning-datatable>
+    </lightning-tab>
+   </lightning-tabset>
+        
+</lightning-card>
+</template>

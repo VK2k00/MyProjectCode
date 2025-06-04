@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Opportunity Records" icon-name="custom:custom14">
+        <div class="slds-var-m-around_medium">
+            <template if:true={opportunity.data}>
+            <lightning-datatable 
+            key-field="Id"
+            data={opportunity.data}
+            columns={columns}
+            onsave={handleSave}
+            draft-values={defaultValues}>
+        </lightning-datatable>
+    </template>
+
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,26 @@
+<template>
+    <lightning-card title="Account Details">
+      
+
+        <template if:true={connAccount}>
+
+            <template for:each={connAccount.data} for:item="acc">
+
+                <div key={acc.accid} class="slds-var-m-around_medium">
+
+                    <p class="slds-var-m-around_medium"> Account Name   : {acc.Name}</p>
+
+                    <p class="slds-var-m-around_medium"> Employee Count : {acc.NumberOfEmployees}</p>
+
+                    <p class="slds-var-m-around_medium"> Type           : {acc.Type}</p>
+
+                </div>
+
+              </template>
+
+                     
+
+        </template>
+
+    </lightning-card>
+</template>

@@ -1,0 +1,3 @@
+<aura:component >
+    <c:DemoComp var1="Value from DemoComp1"/>
+</aura:component>

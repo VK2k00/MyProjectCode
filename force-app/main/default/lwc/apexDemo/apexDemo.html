@@ -1,0 +1,18 @@
+<template>
+    <div class="slds-p-around_medium">
+        <lightning-card title="wire a property in LWC">
+            <div class="slds-p-around_medium">
+                <template for:each={results} for:item="result">
+                    <div class="slds-item" key={result.Id}>
+                        <strong>{result.Name}</strong>
+                        <lightning-formatted-number value={result.AnnualRevenue}
+                        format-style="Currency"
+                        currency-code="USD"
+                        currency-display-as="code">
+                    </lightning-formatted-number>
+                    </div>
+                </template>
+            </div>
+        </lightning-card>
+    </div>
+</template>

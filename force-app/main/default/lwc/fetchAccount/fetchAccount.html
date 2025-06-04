@@ -1,0 +1,10 @@
+<template>
+ <lightning-card title="Account related contact">
+<div class="slds-var-p-arount_small">
+    <template lwc:if={accountList}>
+        <lightning-combobox label="Select Account" onchange={handleChange} options={accountList}></lightning-combobox>
+    </template>
+    <c-display-contact lwc:ref="childComp"></c-display-contact>
+</div>
+ </lightning-card>
+</template>

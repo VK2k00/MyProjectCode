@@ -1,0 +1,22 @@
+<template>
+    <div class="slds-m-around_medium">
+        <lightning-input label="Search" placeholder="Search Accounts or Contacts" value={searchKey} onchange={handleSearch}></lightning-input>
+        
+        <template if:true={searchResults}>
+            <lightning-card title="Search Results">
+                <ul>
+                    <template for:each={searchResults} for:item="result">
+                        <li key={result.Id}>
+                            <template if:true={result.AccountNumber}>
+                                <b>Account:</b> {result.Name} - {result.AccountNumber}
+                            </template>
+                            <template if:false={result.AccountNumber}>
+                                <b>Contact:</b> {result.FirstName} {result.LastName} - {result.Email}
+                            </template>
+                        </li>
+                    </template>
+                </ul>
+            </lightning-card>
+        </template>
+    </div>
+</template>

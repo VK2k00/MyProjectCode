@@ -1,0 +1,425 @@
+html,
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    /* Ensure a common font for readability */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    /* Ensure container fills the viewport height */
+}
+
+.search-icon svg {
+    width: 24px;
+    /* Adjust as needed */
+    height: 24px;
+    /* Adjust as needed */
+}
+
+
+.ofi-results .category-item a {
+    color: black !important;
+    /* Set link text color to black */
+    text-decoration: none;
+    /* Remove underline if needed */
+}
+
+.ofi-results .category-item a {
+    color: black !important;
+    /* Set link text color to black */
+    text-decoration: none;
+    /* Remove underline if needed */
+}
+
+.prName {
+    font-weight: bold;
+}
+
+
+.ofi-results .category-item h2 {
+    font-size: 16px;
+    /* Adjust font size for page names */
+    font-weight: bold;
+    /* Optionally adjust font weight */
+    margin-bottom: 8px;
+    /* Optionally adjust margin */
+}
+
+.ofi-results .category-item p {
+    font-size: 16px;
+    /* Adjust font size for description */
+    margin-bottom: 12px;
+    /* Optionally adjust margin */
+}
+
+/* Example styles for the OFI pages results with hover effect */
+
+.ofi-results .category-item {
+    position: relative;
+    /* Ensure the container is positioned relative */
+    margin-bottom: 10px;
+    /* Adjust spacing between result items */
+}
+
+.ofi-results .category-item a {
+    color: black;
+    /* Set link text color to black */
+    text-decoration: none;
+    /* Remove underline if needed */
+    display: block;
+    /* Ensure links take up full width */
+    padding: 10px;
+    /* Add padding around each result item */
+    border: 1px solid transparent;
+    /* Start with transparent border */
+    border-radius: 5px;
+    /* Add rounded corners */
+    transition: all 0.3s ease;
+    /* Smooth transition for hover effect */
+}
+
+.ofi-results .category-item a:hover {
+    border-color: #ccc;
+    /* Add border color on hover */
+    background-color: #f0f0f0;
+    /* Light gray background on hover */
+}
+
+.product-image {
+    width: 50px;
+    /* Set desired width */
+    height: auto;
+    /* Maintain aspect ratio */
+}
+
+/* Arrow indicator on hover */
+.ofi-results .category-item a:hover::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    /* Position below the link */
+    left: 50%;
+    /* Center horizontally */
+    transform: translateX(-50%);
+    /* Adjust for center alignment */
+    border: solid transparent;
+    border-width: 10px;
+    border-top-color: #ccc;
+    /* Color of the arrow */
+}
+
+
+.navbar {
+    width: 100%;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    background-color: rgb(132, 29, 102);
+    border-bottom: 1px solid #ccc;
+}
+
+.logoImg {
+    width: 4vw;
+    height: 8vh;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    margin-right: 17px;
+    font-size: 17px;
+    padding: 10px 13px;
+    text-align: center;
+    color: #f2f2f2;
+}
+
+.nav-links a {
+    margin-right: 17px;
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+    /* Smooth transition for color change */
+}
+
+.nav-links a:hover {
+    color: black;
+    /* Change color to black on hover */
+}
+
+.loginuser {
+    margin-right: 20px;
+    font-size: 15px;
+    padding: 14px 16px;
+    text-align: center;
+    color: #f2f2f2;
+}
+
+.loginuser a {
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+    transition: color 0.3s ease;
+}
+
+.loginuser a:hover {
+    color: black;
+
+}
+
+.body {
+    flex: 1;
+    /* Allow body content to take remaining space */
+    background-color: #ffffff;
+    padding-top: 80px;
+    /* Adjust according to navbar height */
+}
+
+.selectlanguage {
+    background-color: rgb(132, 29, 102);
+    margin-right: 10px;
+    padding: 15px;
+    ;
+    color: white;
+    border-color: #f2f2f2;
+    border-radius: 1rem;
+}
+
+.language-dropdown {
+    margin-right: 20px;
+    /* Adjust spacing between dropdown and search icon if needed */
+    border-radius: 1rem solid #ccc;
+}
+
+.search-icon {
+    border-color: #f2f2f2;
+
+    color: white;
+}
+
+
+.centered-search {
+    width: 77vh;
+    height: 12vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.search-input {
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 0.5rem;
+    box-sizing: border-box;
+    /* Ensures padding and border are included in the width and height */
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 1.5rem;
+}
+
+
+.footer {
+    width: 100%;
+    background-color: rgb(132, 29, 102);
+    color: #fff;
+    padding: 20px;
+    text-align: left;
+    margin-top: auto;
+    /* Push footer to the bottom */
+}
+
+.footer-logo img {
+    height: 50px;
+    /* Adjust height of logo as needed */
+}
+
+.footer-line {
+    border: 0;
+    border-top: 1px solid #fff;
+    width: 100%;
+    margin: 10px auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.copyright {
+    margin: 0;
+    font-size: 14px;
+}
+
+.linkedin-icon img {
+    height: 24px;
+    /* Adjust height of LinkedIn icon as needed */
+}
+
+.custom-search-bar {
+    background-color: #ffffff;
+    border: 2.5px solid #4d4848;
+    border-radius: 20px;
+    padding: 4px 12px;
+    width: 500px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.custom-search-bar input[type="text"]:focus {
+    outline: none;
+    border-color: #6ce6eb;
+    /* Change border color on focus */
+}
+
+.custom-search-bar:hover {
+    border-color: #9fd6f0;
+    /* Change border color on hover */
+}
+
+
+.custom-search-bar input[type="text"] {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+.clear-button {
+    position: absolute;
+    right: 10px;
+    cursor: pointer;
+    font-size: 18px;
+    color: #999;
+}
+
+.clear-button:hover {
+    color: #666;
+}
+
+.centered-result {
+    text-align: left;
+}
+
+
+.results-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px;
+    /* Adjust gap between sections */
+}
+
+.result-section {
+    flex: 1 1 30%;
+    /* Adjust width of each section as needed */
+    padding: 10px;
+    background-color: hsl(0, 0%, 100%);
+    border: 1px solid hsl(0, 0%, 100%);
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.category-heading {
+    color: #000000;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-style: Gilroy-Regular;
+}
+
+.no-results-message {
+    text-align: center;
+    font-size: 30px;
+    font-weight: 600;
+    margin-top: 100px;
+    margin-bottom: 200px;
+}
+
+.category-item a {
+    color: #000;
+}
+
+.link a {
+    color: #0E7490;
+}
+
+.category-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.category-item {
+    font-size: 16px;
+    color: #000000;
+    padding: 8px 0;
+    font-style: Gilroy-Regular;
+    /* Make results font bold */
+    transition: color 0.3s ease;
+    /* Smooth color transition */
+}
+
+.category-item:hover {
+    color: #68679c;
+    /* Change hover color to light grey */
+}
+
+.two-column-product-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Two columns with equal width */
+    gap: 20px;
+    /* Adjust gap between columns */
+    list-style-type: none;
+    /* Remove default list styles */
+    padding: 0;
+}
+
+.product-subtext {
+    position: absolute;
+    bottom: 5px;
+    left: 0;
+    /* Adjust as needed */
+    font-size: 14px;
+    color: #666;
+}
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.pagination button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    margin: 0 5px;
+}
+
+.pagination button[disabled] {
+    color: #ccc;
+    cursor: not-allowed;
+}

@@ -1,0 +1,12 @@
+.slds-m-around_medium {
+    margin: 16px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+li {
+    padding: 5px 0;
+    font-size: 1rem;
+}

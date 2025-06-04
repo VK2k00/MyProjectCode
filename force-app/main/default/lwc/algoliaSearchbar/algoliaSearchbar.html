@@ -1,0 +1,181 @@
+<template>
+    <div class="container">
+        <div class="navbar">
+            <div class="logo">
+                <img class="logoImg"
+                    src="https://play-lh.googleusercontent.com/7xNQJhjRlWDHhoSo49jd2C9Gfr5bFXh2RV6Hkg5reHssVTt__rf35n6O7mUM17SP2w"
+                    alt="Logo">
+            </div>
+            <div class="navbar-right">
+                <div class="nav-links">
+                    <a href="https://ofi-demo.olamdigital.com/en-US/products" class="nav-link" target="_blank">Products
+                        & Ingredients</a>
+                    <a href="https://ofi-demo.olamdigital.com/en-US/sustainability" class="nav-link"
+                        target="_blank">Sustainability</a>
+                    <a href="https://ofi-demo.olamdigital.com/en-US/about-us" class="nav-link" target="_blank">About
+                        us</a>
+                    <a href="https://ofi-demo.olamdigital.com/en-US/careers" class="nav-link" target="_blank">Career</a>
+                    <a href="https://ofi-demo.olamdigital.com/en-US/news" class="nav-link" target="_blank">News</a>
+                    <a href="https://ofi-demo.olamdigital.com/en-US/contact-us" class="nav-link" target="_blank">Contact
+                        us</a>
+
+
+                </div>
+                <div class="language-dropdown">
+                    <select class="selectlanguage">
+                        <option value="english">English</option>
+                        <option value="german">Deutsch</option>
+                    </select>
+                </div>
+                <div class="search-icon" onclick={handleSearchIconClick}>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                    </svg>
+                </div>
+                <div class="loginuser" target="_blank">Peter Perker <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                        height="16" fill="currentColor" class="bi bi-person-circle" viewBox="0 0 16 16">
+                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0" />
+                        <path fill-rule="evenodd"
+                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8m8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1" />
+                    </svg></div>
+            </div>
+        </div>
+
+        <div class="body">
+            <div class="slds-p-around_medium">
+                <div class="custom-search-bar">
+                    <input type="text" id="searchInput" placeholder="Search.." value={searchTerm}
+                        oninput={handleSearch}>
+                    <span class="clear-button" onclick={handleClear} if:true={searchTerm}>✖</span>
+                </div>
+            </div>
+            <template if:true={isLoading}>
+                <lightning-spinner alternative-text="Loading" size="medium" variant="base"></lightning-spinner>
+            </template>
+            <template if:true={error}>
+                <div class="slds-theme_error slds-m-around_medium">
+                    {error}
+                </div>
+            </template>
+            <template if:true={showNoResultsMessage}>
+                <div class="no-results-message">
+                    {message}
+                </div>
+            </template>
+
+            <div class="results-container" if:true={showResults}>
+                <div class="result-section ofi-results">
+                    <h2 class="category-heading">OFI PAGES</h2>
+                    <ul class="category-list">
+                        <template for:each={ofiResults} for:item="page">
+                            <li key={page.name} class="category-item">
+                                <a href={page.url} target="_blank">
+                                    <h2>{page.name}</h2>
+                                    <p>{page.description}</p>
+                                </a>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+
+                <div class="result-section ">
+                    <h2 class="category-heading">CATEGORIES</h2>
+                    <ul class="category-list">
+                        <template for:each={categoryResults} for:item="category">
+                            <li key={category.name} class="category-item">
+                                <a href={category.url} target="_blank">{category.name}</a>
+                            </li>
+                        </template>
+                    </ul>
+                    <h2 class="category-heading">PRODUCT CONTENT</h2>
+                    <ul class="category-list">
+                        <template for:each={pageResults} for:item="page">
+                            <li key={page} class="category-item">
+                                <a href={page.url} target="_blank">{page.name}</a>
+                            </li>
+                        </template>
+                    </ul>
+                    <h2 class="category-heading">CONTRACTS</h2>
+                    <ul class="category-list">
+                        <template for:each={contractResults} for:item="contract">
+                            <li key={contract.Id} class="category-item">
+                                <a href={contract.url} target="_blank">{contract.recordLabel}</a>
+                            </li>
+                        </template>
+                    </ul>
+                </div>
+
+                <div class="result-section">
+                    <h2 class="category-heading">PRODUCTS</h2>
+                    <ul class="two-column-product-list">
+                        <template for:each={displayedProducts} for:item="product">
+                            <li key={product.id} class="category-item">
+                                <img src={product.image_url} alt={product.name} class="product-image" />
+                                <div class="prName">{product.name}</div>
+                                <div>{product.categories_without_path}</div>
+                                <div class="link"><a href={product.url} target="_blank">{product.price}</a></div>
+                            </li>
+                        </template>
+                    </ul>
+                    <div class="pagination">
+                        <button onclick={goToFirstPage}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-double-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M10.354 4.354a.5.5 0 0 1 0 .708L6.707 8l3.647 3.646a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M13.354 4.354a.5.5 0 0 1 0 .708L9.707 8l3.647 3.646a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0z" />
+                            </svg>
+                        </button>
+                        <button onclick={previousPage}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-arrow-left" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M9.354 4.354a.5.5 0 0 1 0 .708L5.707 8l3.647 3.646a.5.5 0 1 1-.708.708l-4-4a.5.5 0 0 1 0-.708l4-4a.5.5 0 0 1 .708 0z" />
+                            </svg>
+                        </button>
+                        <span>{currentPage}</span>
+                        <button onclick={nextPage}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M6.646 11.354a.5.5 0 0 1 0-.708L10.293 8 6.646 4.354a.5.5 0 1 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708 0z" />
+                            </svg>
+                        </button>
+                        <button onclick={goToLastPage}>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-double-arrow-right" viewBox="0 0 16 16">
+                                <path fill-rule="evenodd"
+                                    d="M5.354 4.354a.5.5 0 0 1 0 .708L9.001 8l-3.647 3.646a.5.5 0 1 1-.708-.708l4-4a.5.5 0 0 1 0-.708l-4-4a.5.5 0 0 1-.708 0z" />
+                                <path fill-rule="evenodd"
+                                    d="M2.354 4.354a.5.5 0 0 1 0 .708L6 8l-3.646 3.646a.5.5 0 1 1-.708-.708l4-4a.5.5 0 0 1 0-.708l-4-4a.5.5 0 0 1-.708 0z" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Footer -->
+    <div class="footer">
+        <!-- Logo at the top left -->
+        <div class="footer-logo">
+            <img src="https://play-lh.googleusercontent.com/7xNQJhjRlWDHhoSo49jd2C9Gfr5bFXh2RV6Hkg5reHssVTt__rf35n6O7mUM17SP2w"
+                alt="Logo">
+        </div>
+        <!-- Line below the logo -->
+        <hr class="footer-line">
+
+        <!-- Copyright text and LinkedIn icon -->
+        <div class="footer-content">
+            <p class="copyright">&copy; All Rights Reserved 2023</p>
+            <a href="https://www.linkedin.com/" target="_blank" class="linkedin-icon">
+                <!-- Replace with your LinkedIn icon image or icon font -->
+                <img src="https://thevinedc.com/wp-content/uploads/2015/02/linkedin-logo-white.png" alt="LinkedIn">
+            </a>
+        </div>
+    </div>
+
+</template>

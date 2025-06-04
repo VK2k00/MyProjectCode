@@ -1,0 +1,21 @@
+<template>
+    <!-- Step 1 -->
+    <template if:true={isStep1}>
+        <lightning-input label="First Name" value={formData.firstName} onchange={handleChange} data-field="firstName"></lightning-input>
+        <lightning-input label="Last Name" value={formData.lastName} onchange={handleChange} data-field="lastName"></lightning-input>
+        <lightning-button label="Next" onclick={handleNext}></lightning-button>
+    </template>
+
+    <!-- Step 2 -->
+    <template if:true={isStep2}>
+        <lightning-input label="Email" value={formData.email} onchange={handleChange} data-field="email"></lightning-input>
+        <lightning-input label="Phone" value={formData.phone} onchange={handleChange} data-field="phone"></lightning-input>
+        <lightning-button label="Previous" onclick={handlePrevious}></lightning-button>
+        <lightning-button label="Submit" onclick={handleSubmit}></lightning-button>
+    </template>
+
+    <!-- Success Message -->
+    <template if:true={isSubmitted}>
+        <p>Form Submitted Successfully!</p>
+    </template>
+</template>
